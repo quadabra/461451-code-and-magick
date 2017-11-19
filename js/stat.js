@@ -42,7 +42,7 @@ window.renderStatistics = function (ctx, names, times) {
   if (names[minIndex] === 'Вы') {
     ctx.fillText('Ура вы победили!', 120, 40);
   } else {
-    ctx.fillText('Cписок результатов', 120, 40);
+    ctx.fillText('Список результатов', 120, 40);
   }
 
   var histogramWidth = 150;
