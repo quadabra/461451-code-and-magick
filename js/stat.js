@@ -62,7 +62,7 @@ var drawHistogram = function (timesArr, namesArr, user, scores, ctx) {
   var barWidth = 40;
   var indent = 90;
   var initialX = 155;
-  var initialY = 220;
+  var initialY = 240;
   var lineHeight = 20;
 
   for (var i = 0; i < timesArr.length; i++) {
@@ -74,7 +74,7 @@ var drawHistogram = function (timesArr, namesArr, user, scores, ctx) {
     ctx.fillRect(initialX + indent * i, initialY, barWidth, -timesArr[i] * step);
     ctx.fillStyle = '#000';
     ctx.fillText(namesArr[i], initialX + indent * i, initialY + lineHeight);
-    ctx.fillText(timesArr[i].toFixed(0), initialX + indent * i, initialY + lineHeight * 2);
+    ctx.fillText(timesArr[i].toFixed(0), initialX + indent * i, initialY - lineHeight / 2 - timesArr[i] * step);
   }
 };
 
