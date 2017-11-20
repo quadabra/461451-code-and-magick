@@ -42,7 +42,7 @@ var findMinMax = function (arr) {
     'minIndex': minIndex,
     'max': max,
     'maxIndex': maxIndex
-  }
+  };
 };
 
 var drawStatsText = function (times, names, user, scores, ctx) {
