@@ -62,17 +62,19 @@ var drawHistogram = function (timesArr, namesArr, user, scores, ctx) {
   var barWidth = 40;
   var indent = 90;
   var initialX = 155;
-  var initialY = 230;
-  var lineHeight = 25;
+  var initialY = 220;
+  var lineHeight = 20;
 
-  for (var j = 0; j < timesArr.length; j++) {
-    if (namesArr[j] === user) {
+  for (var i = 0; i < timesArr.length; i++) {
+    if (namesArr[i] === user) {
       ctx.fillStyle = 'rgba(255, 0, 0, 1.0)';
     } else {
       ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.ceil(Math.random() * 10) / 10 + ')';
     }
-    ctx.fillRect(initialX + indent * j, initialY, barWidth, -timesArr[j] * step);
-    ctx.fillText(namesArr[j], initialX + indent * j, initialY + lineHeight);
+    ctx.fillRect(initialX + indent * i, initialY, barWidth, -timesArr[i] * step);
+    ctx.fillStyle = '#000';
+    ctx.fillText(namesArr[i], initialX + indent * i, initialY + lineHeight);
+    ctx.fillText(timesArr[i].toFixed(0), initialX + indent * i, initialY + lineHeight * 2);
   }
 };
 
