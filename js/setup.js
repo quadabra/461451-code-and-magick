@@ -23,7 +23,7 @@ var wizards = (function () {
     wizardsList [i] = {
       name: wizardNames[i],
       coatColor: wizardCoatColors[Math.floor(Math.random() * wizardCoatColors.length)],
-      eyeColor: wizardEyeColors[Math.floor(Math.random() * wizardEyeColors.length)]
+      eyesColor: wizardEyeColors[Math.floor(Math.random() * wizardEyeColors.length)]
     };
   }
   return wizardsList;
