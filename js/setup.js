@@ -43,9 +43,9 @@ var wizards = (function () {
   var wizardsList = [];
   for (var i = 0; i < wizardNumbers; i++) {
     wizardsList [i] = {
-      name: wizardNames[i],
-      coatColor: wizardCoatColors[Math.floor(Math.random() * wizardCoatColors.length)],
-      eyesColor: wizardEyeColors[Math.floor(Math.random() * wizardEyeColors.length)]
+      'name': wizardNames[i],
+      'coatColor': wizardCoatColors[Math.floor(Math.random() * wizardCoatColors.length)],
+      'eyesColor': wizardEyeColors[Math.floor(Math.random() * wizardEyeColors.length)]
     };
   }
   return wizardsList;
