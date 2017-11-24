@@ -9,9 +9,9 @@ var wizards = (function (firstNames, secondNames, coatColors, eyeColors, wizards
   var wizardsList = [];
   for (var i = 0; i < wizardsAmount; i++) {
     wizardsList [i] = {
-      name: firstNames[Math.round(Math.random() * firstNames.length)] + ' ' + secondNames[Math.round(Math.random() * secondNames.length)],
-      coatColor: coatColors[Math.round(Math.random() * coatColors.length)],
-      eyeColor: eyeColors[Math.round(Math.random() * eyeColors.length)]
+      name: firstNames[Math.floor(Math.random() * firstNames.length)] + ' ' + secondNames[Math.floor(Math.random() * secondNames.length)],
+      coatColor: coatColors[Math.floor(Math.random() * coatColors.length)],
+      eyeColor: eyeColors[Math.floor(Math.random() * eyeColors.length)]
     };
   }
   return wizardsList;
