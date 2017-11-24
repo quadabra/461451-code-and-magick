@@ -55,9 +55,9 @@ var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
-
+var wizardTemplate =  document.querySelector('#similar-wizard-template');
 var similarWizardTemplate =
-  document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+  wizardTemplate.content.querySelector('.setup-similar-item');
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
