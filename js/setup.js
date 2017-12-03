@@ -52,7 +52,6 @@ var wizards = (function () {
 })();
 
 var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
 
 var similarListElement = userDialog.querySelector('.setup-similar-list');
 var wizardTemplate = document.querySelector('#similar-wizard-template');
@@ -76,3 +75,70 @@ for (var i = 0; i < wizards.length; i++) {
 similarListElement.appendChild(fragment);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
+
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+
+var setup = document.querySelector('.setup');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = setup.querySelector('.setup-close');
+
+var onPopupEscPress = function(evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var openPopup = function() {
+  setup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function() {
+  setup.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function() {
+  openPopup();
+});
+
+setupOpen.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function() {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function(evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+});
+
+var setupWizard = setup.querySelector('.setup-wizard');
+var wizardCoat = setupWizard.querySelector('.wizard-coat');
+var wizardEyes = setupWizard.querySelector('.wizard-eyes');
+var wizardFireball = setup.querySelector('.setup-fireball-wrap');
+
+var wizardFireballColors = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'];
+
+wizardCoat.addEventListener('click', function () {
+  wizardCoat.style.fill = wizardCoatColors[Math.floor(Math.random() * wizardCoatColors.length)];
+});
+
+wizardEyes.addEventListener('click', function () {
+  wizardEyes.style.fill = wizardEyeColors[Math.floor(Math.random() * wizardEyeColors.length)];
+});
+
+wizardFireball.addEventListener('click', function () {
+  wizardFireball.style.backgroundColor = wizardFireballColors[Math.floor(Math.random() * wizardFireballColors.length)];
+});
