@@ -27,19 +27,21 @@ var wizardCoatColors = [
   'rgb(0, 0, 0)'];
 var wizardEyeColors = ['black', 'red', 'blue', 'yellow', 'green'];
 var wizardNumbers = 4;
-var wizardNames = (function () {
+var generateWizardNames = function (arrFirst, arrSecond, amount) {
   var randomNames = [];
-  for (var i = 0; i < wizardNumbers; i++) {
-    var firstIndex = Math.floor(Math.random() * wizardFirsNames.length);
-    var secondIndex = Math.floor(Math.random() * wizardSecondNames.length);
-    randomNames[i] = wizardFirsNames[firstIndex] + ' ' + wizardSecondNames[secondIndex];
-    wizardFirsNames.splice(firstIndex, 1);
-    wizardSecondNames.splice(secondIndex, 1);
+  for (var i = 0; i < amount; i++) {
+    var firstIndex = Math.floor(Math.random() * arrFirst.length);
+    var secondIndex = Math.floor(Math.random() * arrSecond.length);
+    randomNames[i] = arrFirst[firstIndex] + ' ' + arrSecond[secondIndex];
+    arrFirst.splice(firstIndex, 1);
+    arrSecond.splice(secondIndex, 1);
   }
   return randomNames;
-})();
+};
 
-var wizards = (function () {
+var wizardNames = generateWizardNames(wizardFirsNames, wizardSecondNames, wizardNumbers);
+
+var generateWizards = function () {
   var wizardsList = [];
   for (var i = 0; i < wizardNumbers; i++) {
     wizardsList [i] = {
@@ -49,7 +51,9 @@ var wizards = (function () {
     };
   }
   return wizardsList;
-})();
+};
+
+var wizards = generateWizards();
 
 var userDialog = document.querySelector('.setup');
 
@@ -100,9 +104,7 @@ var closePopup = function () {
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
-setupOpen.addEventListener('click', function () {
-  openPopup();
-});
+setupOpen.addEventListener('click', openPopup);
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
@@ -110,9 +112,7 @@ setupOpen.addEventListener('keydown', function (evt) {
   }
 });
 
-setupClose.addEventListener('click', function () {
-  closePopup();
-});
+setupClose.addEventListener('click', closePopup);
 
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
@@ -120,6 +120,13 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
+userNameInput.addEventListener('focus', function () {
+  document.removeEventListener('keydown', onPopupEscPress);
+});
+
+userNameInput.addEventListener('blur', function () {
+  document.addEventListener('keydown', onPopupEscPress);
+});
 
 userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
@@ -154,14 +161,18 @@ var wizardFireballColors = [
   '#e848d5',
   '#e6e848'];
 
+var randomArrayElement = function (arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+};
+
 wizardCoat.addEventListener('click', function () {
-  wizardCoat.style.fill = wizardCoatColors[Math.floor(Math.random() * wizardCoatColors.length)];
+  wizardCoat.style.fill = randomArrayElement(wizardCoatColors);
 });
 
 wizardEyes.addEventListener('click', function () {
-  wizardEyes.style.fill = wizardEyeColors[Math.floor(Math.random() * wizardEyeColors.length)];
+  wizardEyes.style.fill = randomArrayElement(wizardEyeColors)
 });
 
 wizardFireball.addEventListener('click', function () {
-  wizardFireball.style.backgroundColor = wizardFireballColors[Math.floor(Math.random() * wizardFireballColors.length)];
+  wizardFireball.style.backgroundColor = randomArrayElement(wizardFireballColors);
 });
