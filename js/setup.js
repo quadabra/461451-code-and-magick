@@ -170,7 +170,7 @@ wizardCoat.addEventListener('click', function () {
 });
 
 wizardEyes.addEventListener('click', function () {
-  wizardEyes.style.fill = randomArrayElement(wizardEyeColors)
+  wizardEyes.style.fill = randomArrayElement(wizardEyeColors);
 });
 
 wizardFireball.addEventListener('click', function () {
